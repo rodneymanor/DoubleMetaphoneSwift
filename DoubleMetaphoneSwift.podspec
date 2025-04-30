@@ -10,7 +10,7 @@ Pod::Spec.new do |s|
 
   # ―――  Spec Metadata  ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
   s.name         = "DoubleMetaphoneSwift"
-  s.version      = "1.0.2"
+  s.version      = "1.0.3"
   s.summary      = "A Swift implementation of the Double Metaphone algorithm"
   s.description  = <<-DESC
 This CocoaPod uses the double metaphone algorithm to calculate primary and secondary values of a passed string. It is based the PostgreSQL double metaphone C library, but matches the output of other double metaphone algorithms as well.
