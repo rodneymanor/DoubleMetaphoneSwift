@@ -16,15 +16,25 @@ let package = Package(
         // .package(url: /* package url */, from: "1.0.0"),
     ],
     targets: [
-        // Targets are the basic building blocks of a package, defining a module or a test suite.
-        // Targets can depend on other targets in this package and products from dependencies.
+        // Target for the underlying C/Objective-C implementation
+        .target(
+            name: "CDoubleMetaphone",
+            dependencies: [],
+            path: "DoubleMetaphoneSwift/double_metaphone",
+            publicHeadersPath: "." // Expose headers in the target's root
+        ),
+        // Main Swift target that wraps the C implementation
         .target(
             name: "DoubleMetaphoneSwift",
-            dependencies: [],
-            path: "DoubleMetaphoneSwift"), // Specify path since sources are not in 'Sources/DoubleMetaphoneSwift'
+            dependencies: ["CDoubleMetaphone"], // Depends on the C target
+            path: "DoubleMetaphoneSwift",
+            exclude: ["double_metaphone", "Info.plist"] // Exclude the C source folder and Info.plist
+        ),
         .testTarget(
             name: "DoubleMetaphoneSwiftTests",
             dependencies: ["DoubleMetaphoneSwift"],
-            path: "DoubleMetaphoneSwiftTests"), // Specify path for tests
+            path: "DoubleMetaphoneSwiftTests",
+            exclude: ["Info.plist"] // Exclude Info.plist from test target
+        ),
     ]
 )
