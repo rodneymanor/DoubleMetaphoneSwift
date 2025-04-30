@@ -9,6 +9,7 @@
 import Foundation
 import double_metaphone_swift
 
+@MainActor
 public class DoubleMetaphoneSwift: NSObject {
     let impl = DoubleMetaphoneImpl()
     
